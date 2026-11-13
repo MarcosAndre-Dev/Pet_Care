@@ -74,8 +74,8 @@ Abra os arquivos da pasta `frontend/html/` diretamente no navegador, ou sirva co
 
 ## 👤 Usuário de teste
 
-- **E-mail:** _(preencher)_
-- **Senha:** _(preencher)_
+- **E-mail:** professor@petcare.com
+- **Senha:** professor123
 
 ## 📌 Status
 
