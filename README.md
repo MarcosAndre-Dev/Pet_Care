@@ -1,4 +1,4 @@
-# PetCare — API REST em Python (Trabalho 2)
+# PetCare — API REST em Python 
 
 Mesmo tema do Trabalho 1 (clínica veterinária PetCare), agora implementado em **Python com FastAPI** e banco **PostgreSQL**.
 
