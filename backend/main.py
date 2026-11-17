@@ -1,7 +1,17 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+from routers import auth, pets, tutores
 
-@app.get("/test")
-def test():
-    return "testando api"
+app = FastAPI(title="PetCare API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth.router)
+app.include_router(tutores.router)
+app.include_router(pets.router)

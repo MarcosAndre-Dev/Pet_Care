@@ -3,7 +3,7 @@ async function carregarTutores() {
     const tbody = document.getElementById('tabelaTutores');
     tbody.innerHTML = '';
     if (res.success && res.data) {
-        const tutores = res.data.lista || res.data; 
+        const tutores = res.data.tutores;
         if (tutores.length === 0) return tbody.innerHTML = '<tr><td colspan="4">Nenhum tutor registado.</td></tr>';
         tutores.forEach(t => tbody.innerHTML += `<tr><td>${t.id}</td><td>${t.nome}</td><td>${t.email}</td><td>${t.telefone}</td></tr>`);
     } else tbody.innerHTML = '<tr><td colspan="4" style="color:red;">Erro ao carregar tutores.</td></tr>';
@@ -16,8 +16,9 @@ async function carregarPets(especie = '') {
     const res = await fetchAPI(endpoint);
     tbody.innerHTML = '';
     if (res.success && res.data) {
-        if (res.data.length === 0) return tbody.innerHTML = '<tr><td colspan="5">Nenhum pet encontrado.</td></tr>';
-        res.data.forEach(p => tbody.innerHTML += `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.especie}</td><td>${p.raca || '-'}</td><td>${p.nome_tutor || p.tutor_id}</td></tr>`);
+        const pets = res.data.pets;
+        if (pets.length === 0) return tbody.innerHTML = '<tr><td colspan="5">Nenhum pet encontrado.</td></tr>';
+        pets.forEach(p => tbody.innerHTML += `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.especie}</td><td>${p.raca || '-'}</td><td>${p.tutor_nome || p.tutor_id}</td></tr>`);
     } else tbody.innerHTML = '<tr><td colspan="5" style="color:red;">Erro ao carregar pets.</td></tr>';
 }
 

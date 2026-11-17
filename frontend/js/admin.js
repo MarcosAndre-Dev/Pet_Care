@@ -1,5 +1,3 @@
-// if (!localStorage.getItem('token')) window.location.href = 'login.html';
-
 document.getElementById('btn-logout').addEventListener('click', async () => {
     await fetchAPI('/logout', 'POST');
     localStorage.removeItem('token');
@@ -12,7 +10,7 @@ async function carregarAdminTutores() {
     const selectTutor = document.getElementById('petTutorId');
     tbody.innerHTML = ''; selectTutor.innerHTML = '<option value="">Selecione um tutor...</option>';
     if (res.success) {
-        const tutores = res.data.lista || res.data;
+        const tutores = res.data.tutores;
         tutores.forEach(t => {
             tbody.innerHTML += `<tr><td>${t.id}</td><td>${t.nome}</td><td>${t.email}</td><td>${t.telefone}</td>
                 <td><button class="btn-small btn-edit" onclick="editarTutor(${t.id}, '${t.nome}', '${t.email}', '${t.telefone}')">Editar</button>
@@ -52,8 +50,8 @@ async function carregarAdminPets() {
     const tbody = document.getElementById('tabelaAdminPets');
     tbody.innerHTML = '';
     if (res.success) {
-        res.data.forEach(p => {
-            tbody.innerHTML += `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.especie}</td><td>${p.nome_tutor || p.tutor_id}</td>
+        res.data.pets.forEach(p => {
+            tbody.innerHTML += `<tr><td>${p.id}</td><td>${p.nome}</td><td>${p.especie}</td><td>${p.tutor_nome || p.tutor_id}</td>
                 <td><button class="btn-small btn-edit" onclick="editarPet(${p.id}, '${p.nome}', '${p.especie}', '${p.raca || ''}', '${p.data_nascimento}', ${p.peso_kg}, ${p.tutor_id})">Editar</button>
                 <button class="btn-small btn-danger" onclick="excluirPet(${p.id})">Excluir</button></td></tr>`;
         });
