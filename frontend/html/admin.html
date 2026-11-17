@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Admin - PetCare</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="navbar admin-navbar">
+        <h1>⚙️ PetCare Admin</h1>
+        <div>
+            <a href="index.html" class="btn-outline btn-small">Ver Área Pública</a>
+            <button id="btn-logout" class="btn btn-small btn-danger" style="margin-left: 10px;">Sair (Logout)</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Gestão de Tutores</h2>
+            <form id="formTutor" class="admin-form">
+                <input type="hidden" id="tutorId">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Nome *</label>
+                        <input type="text" id="tutorNome" required minlength="2" maxlength="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Email *</label>
+                        <input type="email" id="tutorEmail" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Telefone *</label>
+                        <input type="text" id="tutorTelefone" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-small" id="btnSalvarTutor">Guardar Tutor</button>
+                <button type="button" class="btn btn-small btn-secondary" id="btnCancelarTutor" style="display:none;">Cancelar Edição</button>
+            </form>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th>Ações</th></tr></thead>
+                <tbody id="tabelaAdminTutores"><tr><td colspan="5">A carregar...</td></tr></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Gestão de Pets</h2>
+            <form id="formPet" class="admin-form">
+                <input type="hidden" id="petId">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Nome *</label>
+                        <input type="text" id="petNome" required minlength="2" maxlength="60">
+                    </div>
+                    <div class="input-group">
+                        <label>Espécie *</label>
+                        <select id="petEspecie" required>
+                            <option value="">Selecione...</option>
+                            <option value="cachorro">Cachorro</option>
+                            <option value="gato">Gato</option>
+                            <option value="ave">Ave</option>
+                            <option value="roedor">Roedor</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Raça</label>
+                        <input type="text" id="petRaca">
+                    </div>
+                    <div class="input-group">
+                        <label>Data de Nasc. *</label>
+                        <input type="date" id="petData" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Peso (kg) *</label>
+                        <input type="number" id="petPeso" step="0.1" min="0.1" max="200" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Tutor *</label>
+                        <select id="petTutorId" required><option value="">A carregar tutores...</option></select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-small" id="btnSalvarPet">Guardar Pet</button>
+                <button type="button" class="btn btn-small btn-secondary" id="btnCancelarPet" style="display:none;">Cancelar Edição</button>
+            </form>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Tutor</th><th>Ações</th></tr></thead>
+                <tbody id="tabelaAdminPets"><tr><td colspan="5">A carregar...</td></tr></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+/* frontend/css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --danger-color: #ef4444;
+    --danger-hover: #dc2626;
+    --warning-color: #f59e0b;
+    --warning-hover: #d97706;
+    --success-color: #10b981;
+    --success-hover: #059669;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+body { background-color: var(--bg-color); color: var(--text-main); }
+
+/* --- Tipografia & Navbar --- */
+h1, h2, h3 { color: var(--text-main); font-weight: 600; }
+.navbar { background: var(--card-bg); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.navbar h1 { font-size: 22px; color: var(--primary-color); }
+.admin-navbar { border-bottom: 3px solid var(--primary-color); }
+
+/* --- Botões --- */
+.btn { background: var(--primary-color); color: #fff; border: none; padding: 10px 16px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; transition: all 0.2s; }
+.btn:hover { background: var(--primary-hover); transform: translateY(-1px); }
+.btn-outline { color: var(--text-main); background: white; border: 1px solid var(--border-color); padding: 8px 16px; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: 500; transition: 0.2s; }
+.btn-outline:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.btn-small { padding: 6px 12px; font-size: 13px; margin-right: 5px; }
+
+.btn-danger { background-color: var(--danger-color); color: white; border: none; }
+.btn-danger:hover { background-color: var(--danger-hover); color: white; }
+.btn-edit { background-color: var(--warning-color); color: white; border: none; }
+.btn-edit:hover { background-color: var(--warning-hover); }
+.btn-secondary { background-color: var(--text-muted); }
+.btn-secondary:hover { background-color: #475569; }
+
+/* --- Containers e Cards --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 20px 40px; }
+.card { background: var(--card-bg); padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid var(--border-color); }
+.card h2 { margin-bottom: 20px; font-size: 18px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+
+/* --- Formulários --- */
+.input-group { margin-bottom: 15px; text-align: left; }
+.input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; font-weight: 500; }
+.input-group input, .input-group select { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 14px; color: var(--text-main); transition: 0.2s; background: var(--bg-color); }
+.input-group input:focus, .input-group select:focus { outline: none; border-color: var(--primary-color); background: #fff; box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
+.admin-form { background: #fafafa; padding: 20px; border-radius: 8px; border: 1px dashed var(--border-color); margin-bottom: 25px; }
+
+/* --- Tabelas --- */
+.data-table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 14px; }
+.data-table th, .data-table td { padding: 14px 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+.data-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 12px; letter-spacing: 0.5px; background: #fdfdfd; }
+.data-table tr:hover td { background-color: var(--bg-color); }
+
+/* --- Específicos do Login --- */
+.login-page { display: flex; justify-content: center; align-items: center; height: 100vh; }
+.login-container { background: var(--card-bg); padding: 40px 30px; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; border: 1px solid var(--border-color); }
+.login-container h2 { color: var(--primary-color); margin-bottom: 8px; font-size: 24px; }
+.login-container p { color: var(--text-muted); margin-bottom: 25px; font-size: 14px; }
+.login-container .btn { width: 100%; font-size: 16px; padding: 12px; margin-top: 10px; }
+.error-msg { background: #fee2e2; color: var(--danger-color); padding: 12px; border-radius: 6px; font-size: 13px; margin-bottom: 15px; border: 1px solid #fecaca; }
+.link-voltar { display: block; margin-top: 25px; font-size: 13px; color: var(--text-muted); text-decoration: none; transition: 0.2s; }
+.link-voltar:hover { color: var(--primary-color); }
+
+/* --- Filtros --- */
+.filter-group { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; background: #fafafa; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); }
+.filter-group label { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+.filter-group select { padding: 8px 12px; border: 1px solid var(--border-color); border-radius: 6px; outline: none; background: #fff; min-width: 150px; }

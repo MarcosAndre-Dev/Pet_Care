@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetCare - Clínica Veterinária</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>🐾 PetCare</h1>
+        <a href="login.html" class="btn-outline">Entrar como Funcionário</a>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Nossos Pacientes (Pets)</h2>
+            <div class="filter-group">
+                <label for="filtroEspecie">Espécie:</label>
+                <select id="filtroEspecie">
+                    <option value="">Todas as espécies</option>
+                    <option value="cachorro">Cachorro</option>
+                    <option value="gato">Gato</option>
+                    <option value="ave">Ave</option>
+                    <option value="roedor">Roedor</option>
+                    <option value="outro">Outro</option>
+                </select>
+                <button id="btnFiltrarPets" class="btn btn-small" style="background: var(--success-color);">Filtrar</button>
+            </div>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nome</th><th>Espécie</th><th>Raça</th><th>Tutor</th></tr></thead>
+                <tbody id="tabelaPets"><tr><td colspan="5">A carregar pets...</td></tr></tbody>
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>Tutores Registados</h2>
+            <table class="data-table">
+                <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th></tr></thead>
+                <tbody id="tabelaTutores"><tr><td colspan="4">A carregar tutores...</td></tr></tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>
