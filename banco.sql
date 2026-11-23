@@ -28,6 +28,9 @@ CREATE TABLE usuarios (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL,
     senha_hash VARCHAR(255) NOT NULL,
+--Alteação feita para a segurança do projeto, é para o usuário ser bloqueado depois de 5 tentativas, e é bloqueado por 15 MINs
+    tentativas_falhas INTEGER NOT NULL DEFAULT 0,
+    bloqueado_ate TIMESTAMP,
     CONSTRAINT uq_usuarios_email UNIQUE (email)
 );
 
