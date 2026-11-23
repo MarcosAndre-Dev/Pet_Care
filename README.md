@@ -6,8 +6,8 @@ Mesmo tema do Trabalho 1 (clínica veterinária PetCare), agora implementado em 
 
 API para gerenciar os tutores (donos) e os pets de uma clínica veterinária:
 
-- Qualquer pessoa pode **consultar** tutores e pets.
-- Apenas funcionários **autenticados por token** podem cadastrar, alterar e excluir.
+- Todas as rotas exigem autenticação por token, exceto `POST /login`.
+- Funcionários autenticados podem consultar, cadastrar, alterar e excluir tutores e pets.
 
 ## 🛠️ Tecnologias
 
@@ -27,6 +27,7 @@ Pet_Care/
 │ │ ├── database.py # conexão com o PostgreSQL
 │ │ └── models.py # modelos/esquemas de dados
 │ └── routers/
+│ ├── auth.py # login/logout e verificação de token
 │ ├── tutores.py # rotas de tutores
 │ └── pets.py # rotas de pets
 ├── frontend/
@@ -50,7 +51,7 @@ venv\Scripts\activate
 # Linux/Mac
 source venv/bin/activate
 
-pip install fastapi uvicorn psycopg2-binary
+pip install fastapi uvicorn psycopg2-binary python-dotenv email-validator bcrypt
 
 uvicorn main:app --reload
 ```
@@ -60,17 +61,21 @@ A API fica disponível em `http://localhost:8000`.
 ### Banco de dados
 
 1. Crie o banco `petcare` no PostgreSQL.
-2. Execute o script de criação das tabelas (em `backend/database/`).
+2. Execute o script de criação das tabelas (`banco.sql`, na raiz do projeto).
+3. Crie um arquivo `.env` dentro de `backend/` com: `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`.
 
 ### Frontend
 
-Abra os arquivos da pasta `frontend/html/` diretamente no navegador, ou sirva com uma extensão como *Live Server*.
+Abra os arquivos da pasta `frontend/html/` com uma extensão como *Live Server* (não funciona abrindo o arquivo direto, por causa do CORS).
 
-## 🔑 Autenticação
+## 🔑 Autenticação e segurança
 
 - `POST /login` devolve um token válido por 2 horas.
-- Rotas protegidas exigem o cabeçalho `Authorization: Bearer <token>`.
+- Todas as demais rotas exigem o cabeçalho `Authorization: Bearer <token>`.
 - `POST /logout` invalida o token.
+- CORS restrito à origem do frontend.
+- Limite de tentativas de login para evitar força bruta.
+- Tratamento de erros padronizado (não expõe detalhes internos do sistema).
 
 ## 👤 Usuário de teste
 
@@ -79,7 +84,7 @@ Abra os arquivos da pasta `frontend/html/` diretamente no navegador, ou sirva co
 
 ## 📌 Status
 
-🚧 Projeto em desenvolvimento — próximas etapas: conexão com o banco, rotas de tutores e pets, frontend.
+✅ CRUD completo de tutores e pets · ✅ autenticação por token · 🚧 reforço de segurança em andamento (CORS, limite de login, tratamento de erros).
 
 ## 👥 Integrantes
 
