@@ -29,7 +29,7 @@ def buscar_tutor_ou_404(tutor_id: int):
 
 
 @router.get("/tutores")
-def listar_tutores():
+def listar_tutores(token: str = Depends(exigir_token)):
     conexao = conectar()
     cursor = conexao.cursor()
     cursor.execute("SELECT id, nome, telefone, email FROM tutores ORDER BY id")
@@ -42,12 +42,12 @@ def listar_tutores():
 
 
 @router.get("/tutores/{tutor_id}")
-def buscar_tutor(tutor_id: int):
+def buscar_tutor(tutor_id: int, token: str = Depends(exigir_token)):
     return buscar_tutor_ou_404(tutor_id)
 
 
 @router.get("/tutores/{tutor_id}/pets")
-def listar_pets_do_tutor(tutor_id: int):
+def listar_pets_do_tutor(tutor_id: int, token: str = Depends(exigir_token)):
     buscar_tutor_ou_404(tutor_id)
 
     conexao = conectar()

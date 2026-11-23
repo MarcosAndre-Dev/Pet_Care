@@ -36,7 +36,7 @@ def buscar_pet_ou_404(pet_id: int):
 
 
 @router.get("/pets")
-def listar_pets(especie: Optional[str] = Query(None)):
+def listar_pets(especie: Optional[str] = Query(None), token: str = Depends(exigir_token)):
     conexao = conectar()
     cursor = conexao.cursor()
 
@@ -61,7 +61,7 @@ def listar_pets(especie: Optional[str] = Query(None)):
 
 
 @router.get("/pets/{pet_id}")
-def buscar_pet(pet_id: int):
+def buscar_pet(pet_id: int, token: str = Depends(exigir_token)):
     conexao = conectar()
     cursor = conexao.cursor()
     cursor.execute(
