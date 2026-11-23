@@ -85,7 +85,7 @@ Abra os arquivos da pasta `frontend/html/` com uma extensão como *Live Server* 
 
 ## 📌 Status
 
-✅ CRUD completo de tutores e pets · ✅ autenticação por token · 🚧 reforço de segurança em andamento (CORS, limite de login, tratamento de erros).
+✅ CRUD completo de tutores e pets · ✅ autenticação por token · ✅ CORS restrito · ✅ limite de tentativas de login · ✅ tratamento de erro genérico em andamento.
 
 ## 👥 Integrantes
 
