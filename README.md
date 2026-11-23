@@ -51,7 +51,8 @@ venv\Scripts\activate
 # Linux/Mac
 source venv/bin/activate
 
-pip install fastapi uvicorn psycopg2-binary python-dotenv email-validator bcrypt
+#Fiz essa alteração pois o windows bloqueava o antigo.
+python -m pip install fastapi uvicorn psycopg2-binary python-dotenv email-validator bcrypt
 
 uvicorn main:app --reload
 ```
